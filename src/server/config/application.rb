@@ -34,5 +34,18 @@ module Bcssttc
       g.assets = false
       g.template_engine = false
     end
+
+    config.middleware.insert_before(0, Rack::Cors) do
+      allow do
+        origins("localhost:3030")
+
+        resource(
+          "/api/*",
+          headers: :any,
+          credentials: true,
+          methods: [:get, :post, :delete, :patch, :put, :option]
+        )
+      end
+    end
   end
 end

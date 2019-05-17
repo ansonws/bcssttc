@@ -24,6 +24,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_model_serializers (0.10.9)
+      actionpack (>= 4.1, < 6)
+      activemodel (>= 4.1, < 6)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (5.2.3)
       activesupport (= 5.2.3)
       globalid (>= 0.3.6)
@@ -48,6 +53,8 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (11.0.1)
+    case_transform (0.2)
+      activesupport
     choice (0.2.0)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -58,7 +65,6 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
-    cowsay (0.3.0)
     crass (1.0.4)
     erubi (1.8.0)
     execjs (2.7.0)
@@ -72,6 +78,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.9.0)
       activesupport (>= 4.2.0)
+    jsonapi-renderer (0.2.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -100,6 +107,7 @@ GEM
       pry (>= 0.10.4)
     puma (3.12.1)
     rack (2.0.7)
+    rack-cors (1.0.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -181,10 +189,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   bootsnap (>= 1.1.0)
   byebug
   coffee-rails (~> 4.2)
-  cowsay
   faker
   hirb
   jbuilder (~> 2.5)
@@ -192,6 +200,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pry-rails
   puma (~> 3.11)
+  rack-cors
   rails (~> 5.2.3)
   rails-erd
   sass-rails (~> 5.0)
