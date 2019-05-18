@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NavBar from './NavBar';
 import Home from './Home';
 import Footer from './Footer';
+import { getThemeProps } from '@material-ui/styles';
 
 function App() {
   return (
