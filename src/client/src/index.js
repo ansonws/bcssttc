@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
 import { ThemeProvider } from '@material-ui/styles';
-import theme from './utils/theme';
+import theme from './designs/theme';
 import * as serviceWorker from './serviceWorker';
 
 console.log(theme)
