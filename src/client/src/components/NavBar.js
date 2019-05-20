@@ -11,17 +11,17 @@ function NavBar() {
       <div>
       <AppBar position="static">
         <Toolbar>
-          <NavLink exact to="/" className={classes.navLink}>
+          <NavLink exact to="/" className={classes.link}>
             <Button color="secondary">
               Home
             </Button>
           </NavLink>
-          <NavLink exact to="/tournaments" className={classes.navLink}>
+          <NavLink exact to="/tournaments" className={classes.link}>
             <Button color="secondary">
               Tournament
             </Button>
           </NavLink>
-          <NavLink exact to="/contact-us" className={classes.navLink}>
+          <NavLink exact to="/contact-us" className={classes.link}>
             <Button color="secondary">
               Contact Us
             </Button>

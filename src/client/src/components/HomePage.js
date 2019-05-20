@@ -5,8 +5,6 @@ function HomePage() {
   const classes = styles();
   return (
     <div className={classes.homePage}>
-      {/* <div backgroundImage="./home.jpeg"> */}
-      {/* <img src= /> */} 
       <h1>2019 BC Secondary School Table Tennis Championships</h1>
     </div>
   )

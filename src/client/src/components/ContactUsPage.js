@@ -1,6 +1,6 @@
 import React from 'react'; 
 
-function ContactUs() {
+function ContactUsPage() {
   return ( 
     <main>
       <h1>Contact Us</h1>
@@ -23,4 +23,4 @@ function ContactUs() {
   );
 }
  
-export default ContactUs;
+export default ContactUsPage;

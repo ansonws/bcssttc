@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import NavBar from './NavBar';
 import HomePage from './HomePage';
+import TournamentIndexPage from './TournamentIndexPage';
+import NavBar from './NavBar';
 import Footer from './Footer';
 import { getThemeProps } from '@material-ui/styles';
 
@@ -12,6 +13,7 @@ function App() {
         <NavBar />
       </header>
       <Switch>
+        <Route exact path="/tournaments" component={TournamentIndexPage} />
         <Route exact path="/" component={HomePage} />
       </Switch>
       <footer>
