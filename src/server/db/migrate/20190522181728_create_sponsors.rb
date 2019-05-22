@@ -6,7 +6,6 @@ class CreateSponsors < ActiveRecord::Migration[5.2]
       t.string :position
       t.string :email
       t.bigint :phone_number
-      t.references :school, foreign_key: true
 
       t.timestamps
     end

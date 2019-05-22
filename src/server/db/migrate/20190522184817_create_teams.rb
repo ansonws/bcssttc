@@ -3,7 +3,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
     create_table :teams do |t|
       t.string :gender
       t.string :tier
-      t.references :school, foreign_key: true
+      t.references :season, foreign_key: true
 
       t.timestamps
     end
