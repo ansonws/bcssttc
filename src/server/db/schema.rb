@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_22_200258) do
+ActiveRecord::Schema.define(version: 2019_05_23_001437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,8 +84,8 @@ ActiveRecord::Schema.define(version: 2019_05_22_200258) do
   end
 
   create_table "tenures", force: :cascade do |t|
-    t.string "grade"
-    t.string "rating"
+    t.integer "grade"
+    t.integer "rating"
     t.bigint "season_id"
     t.bigint "team_id"
     t.datetime "created_at", null: false
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2019_05_22_200258) do
   end
 
   create_table "tournaments", force: :cascade do |t|
-    t.string "edition"
+    t.integer "edition"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
