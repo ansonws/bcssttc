@@ -1,6 +1,8 @@
 class Team < ApplicationRecord
   belongs_to :season
-  belongs_to :entries, as: :competitor
+  # belongs_to :entry
+  has_one :entry, as: :competitor, dependent: :destroy
+  
 
   has_many :tenures, dependent: :destroy
 

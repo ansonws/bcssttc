@@ -1,5 +1,5 @@
 class Sponsor < ApplicationRecord
-  belongs_to :season
+  has_many :seasons
 
   validates(
     :first_name, 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_23_001437) do
+ActiveRecord::Schema.define(version: 2019_05_23_181053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,8 +68,6 @@ ActiveRecord::Schema.define(version: 2019_05_23_001437) do
     t.bigint "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "season_id"
-    t.index ["season_id"], name: "index_sponsors_on_season_id"
   end
 
   create_table "teams", force: :cascade do |t|
@@ -108,7 +106,6 @@ ActiveRecord::Schema.define(version: 2019_05_23_001437) do
   add_foreign_key "seasons", "schools"
   add_foreign_key "seasons", "sponsors"
   add_foreign_key "seasons", "tournaments"
-  add_foreign_key "sponsors", "seasons"
   add_foreign_key "teams", "entries"
   add_foreign_key "teams", "seasons"
   add_foreign_key "tenures", "players"
