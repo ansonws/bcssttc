@@ -11,7 +11,7 @@ const theme = createMuiTheme({
     error: {
       main: '#EC2C3E',
     }
-  }
+  },
 });
 
 export default theme;

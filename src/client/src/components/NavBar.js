@@ -9,7 +9,7 @@ function NavBar() {
   const classes = styles();
   return (
       <div>
-      <AppBar position="static">
+    <AppBar position="static">
         <Toolbar>
           <NavLink exact to="/" className={classes.link}>
             <Button color="secondary">
