@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-const homeImage = 'images/home.jpeg';
+const homeImage = 'images/semiahmoo1.jpeg';
 
 const styles = makeStyles(theme => ({
   link: {

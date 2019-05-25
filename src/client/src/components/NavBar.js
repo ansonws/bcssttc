@@ -21,9 +21,14 @@ function NavBar() {
               Tournament
             </Button>
           </NavLink>
+          <NavLink exact to="/results" className={classes.link}>
+            <Button color="secondary">
+              Results
+            </Button>
+          </NavLink>
           <NavLink exact to="/contact-us" className={classes.link}>
             <Button color="secondary">
-              Contact Us
+              Contact
             </Button>
           </NavLink>
         </Toolbar>
