@@ -1,5 +1,5 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {Component} from 'react';
+import { makeStyles } from '@material-ui/core/styles'; 
 import PhoneNumberInput from './PhoneNumberInput';
 import TextField from '@material-ui/core/TextField';
 
@@ -23,37 +23,35 @@ const useStyles = makeStyles(theme => ({
 
 function DelegateForm(props) {
   const classes = useStyles();
+  const { formValues, handleChange } = props;
   return (
     <main>
       <form>
       <TextField
         label="School Name"
         style={{ margin: 8 }}
-        // placeholder="Placeholder"
         fullWidth
+        variant="outlined"
         margin="normal"
-        variant="filled"
-        // InputLabelProps={{
-          //   shrink: true,
-          // }}
+        value={formValues.schoolName}
+        onChange={handleChange('schoolName')}
+        required
       />
       <h2>School Delegate Information</h2>
       <TextField
         label="First Name"
         className={classes.textField}
-        // value={values.name}
-        // onChange={handleChange('name')}
         margin="normal"
-        variant="filled"
+        value={formValues.sponsorFirstName}
+        onChange={handleChange('sponsorFirstName')}
         required
       />
       <TextField
         label="Last Name"
         className={classes.textField}
-        // value={values.name}
-        // onChange={handleChange('name')}
         margin="normal"
-        variant="filled"
+        value={formValues.sponsorLastName}
+        onChange={handleChange('sponsorLastName')}
         required
       />
       <br/>
@@ -61,10 +59,9 @@ function DelegateForm(props) {
         label="Position"
         helperText="Sponsor, Teacher, Coach..."
         className={classes.textField}
-        // value={values.name}
-        // onChange={handleChange('name')}
         margin="normal"
-        variant="filled"
+        value={formValues.position}
+        onChange={handleChange('position')}
         required
       />
       <TextField
@@ -75,12 +72,18 @@ function DelegateForm(props) {
         name="email"
         autoComplete="email"
         margin="normal"
-        variant="filled"
+        value={formValues.email}
+        onChange={handleChange('email')}
+        required
       />
-      <PhoneNumberInput />
+      <PhoneNumberInput 
+        handleChange={handleChange}
+      />
       </form>
     </main>
   )
 }
 
 export default DelegateForm;
+
+

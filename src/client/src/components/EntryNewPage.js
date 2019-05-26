@@ -1,5 +1,5 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {Component} from 'react';
+import styles from '../designs/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -9,62 +9,137 @@ import Container from '@material-ui/core/Container';
 import DelegateForm from './DelegateForm';
 import EventForm from './EventForm';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    width: '90%',
-  },
-  backButton: {
-    marginRight: theme.spacing(1),
-  },
-  instructions: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-  },
-}));
-
 function getSteps() {
   return [
     'School Information', 
     'Events', 
-    'Create an ad'
+    'Fees'
   ];
 }
 
-function getStepContent(stepIndex) {
-  switch (stepIndex) {
-    case 0:
-      return <DelegateForm />
-    case 1:
-      return <EventForm />;
-    case 2:
-      return 'This is the bit I really care about!';
-    default:
-      return 'Uknown stepIndex';
+class EntryNewPage extends Component {
+  state = { 
+    step: 1,
+    schoolName: '',
+    sponsorFirstName: '',
+    sponsorLastName: '',
+    position: '',
+    email: '',
+    phoneNumber: '',
+    teams: [
+      {
+        gender: 'Boys',
+        tier: 'A',
+        playerCount: 0
+      },
+      {
+        gender: 'Boys',
+        tier: 'B',
+        playerCount: 0
+      },
+      {
+        gender: 'Girls',
+        tier: 'A',
+        playerCount: 0
+      },
+      {
+        gender: 'Girls',
+        tier: 'B',
+        playerCount: 0
+      }
+    ]
   }
-}
 
-function EntryNewPage() {
-  const classes = useStyles();
-  const [user, setUser] = React.useState({});
-
-  const [activeStep, setActiveStep] = React.useState(0);
-  const steps = getSteps();
-
-  function handleNext() {
-    setActiveStep(prevActiveStep => prevActiveStep + 1);
+  getStepContent = (step) => {
+    switch (step) {
+      case 0:
+        return (
+          <DelegateForm 
+            handleChange={this.handleChange}
+            formValues={this.state}
+          />
+        )
+      case 1:
+        return (
+          <EventForm 
+            handleChange={this.handleDropDownChange}
+            formValues={this.state}
+          />
+        )
+      case 2:
+        return 'Confirmation';
+      default:
+        return 'Unknown stepIndex';
+    }
   }
 
-  function handleBack() {
-    setActiveStep(prevActiveStep => prevActiveStep - 1);
+  handleNextStep = () => {
+    const { step } = this.state;
+    this.setState({
+      step: step + 1
+    });
   }
 
-  function handleReset() {
-    setActiveStep(0);
+  handlePreviousStep = () => {
+    const { step } = this.state;
+    this.setState({
+      step: step - 1
+    });
   }
 
-  return (
-    <div className={classes.root}>
-      <Stepper activeStep={activeStep} alternativeLabel>
+  handleReset = () => {
+    const { step } = this.state;
+    this.setState({
+      step: 0
+    });
+  }
+
+  handleDropDownChange = (input, index) => e => {
+    const teams = [...this.state.teams]
+    teams[index].playerCount = e.target.value;
+    this.setState({teams})
+  }
+
+  handleChange = input => e => {
+    console.log(e.target.value);
+    console.log(input);
+    console.log(this.state.teams[0].playerCount);
+    this.setState({[input]: e.target.value})
+    // this.setState({teams: e.target.value})
+  }
+
+  render () {
+    const { 
+      step,
+      schoolName,
+      sponsorFirstName,
+      sponsorLastName,
+      position,
+      email,
+      phoneNumber,
+    } = this.state;
+
+    const values = { 
+      schoolName,
+      sponsorFirstName,
+      sponsorLastName,
+      position,
+      email,
+      phoneNumber,
+    }
+
+    const steps = getSteps();
+    const { 
+      getStepContent,
+      handleNextStep,
+      handlePreviousStep,
+      handleReset,
+      handleChange,
+    } = this;
+
+    return (
+      <div >
+      <Stepper activeStep={step} alternativeLabel>
         {steps.map(label => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
@@ -73,24 +148,23 @@ function EntryNewPage() {
       </Stepper>
       <Container maxWidth="md">
       <div>
-        {activeStep === steps.length ? (
+        {step === steps.length ? (
           <div>
-            <Typography className={classes.instructions}>All steps completed</Typography>
+            <Typography>All steps completed</Typography>
             <Button onClick={handleReset}>Reset</Button>
           </div>
         ) : (
           <div>
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            <Typography >{getStepContent(step)}</Typography>
             <div>
               <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={classes.backButton}
-                >
+                disabled={step === 0}
+                onClick={handlePreviousStep}
+              >
                 Back
               </Button>
-              <Button variant="contained" color="primary" onClick={handleNext}>
-                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+              <Button variant="contained" color="primary" onClick={handleNextStep}>
+                {step === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
             </div>
           </div>
@@ -98,7 +172,59 @@ function EntryNewPage() {
       </div>
     </Container>
     </div>
-  );
+    );
+  } 
 }
 
 export default EntryNewPage;
+
+// class EntryNewPage extends Component {
+//   state = { 
+//     step: 1,
+//     schoolName: '',
+//     sponsorFirstName: '',
+//     sponsorLastName: '',
+//     position: '',
+//     email: '',
+//     phoneNumber: ''
+//   }
+
+//   nextStep = () => {
+
+//   }
+
+//   previousStep = () => {
+//     const { step } = this.state;
+//     this.setState({
+//       step: step - 1
+//     });
+//   }
+
+//   handleChange = input => e => {
+//     this.setState({[input]: e.target.value})
+//   }
+
+//   render() { 
+
+
+//     if (step === 1) {
+//       return (
+//         <DelegateForm 
+//           nextStep={this.nextStep}
+//           handleChange={this.handleChange}
+//           values={values}
+//         />
+//       )
+//     } else if (step === 2) {
+//       return (
+//         <EntryNewPage
+//           nextStep={this.nextStep}
+//           handleChange={this.handleChange}
+//           values={values}
+//         />
+//       )
+//     }
+//   }
+// }
+ 
+// export default EntryNewPage;

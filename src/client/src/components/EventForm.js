@@ -1,7 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import PhoneNumberInput from './PhoneNumberInput';
 import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import FilledInput from '@material-ui/core/FilledInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import TeamInput from './TeamInput';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -19,25 +27,21 @@ const useStyles = makeStyles(theme => ({
   menu: {
     width: 200,
   },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
 }))
 
 function EventForm(props) {
   const classes = useStyles();
+  const { formValues, handleChange } = props;
   return (
     <main>
       <form>
-      <TextField
-        label="Number of Teams"
-        // value={values.age}
-        // onChange={handleChange('age')}
-        type="number"
-        className={classes.textField}
-        // InputLabelProps={{
-        //   shrink: true,
-        // }}
-        margin="normal"
-        variant="filled"
-      />
+          <TeamInput 
+            teams={formValues.teams}
+            handleChange={handleChange}
+          />
       </form>
     </main>
   )

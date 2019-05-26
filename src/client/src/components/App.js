@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HomePage from './HomePage';
 import TournamentIndexPage from './TournamentIndexPage';
 import EntryNewPage from './EntryNewPage';
-import Results from './Results';
+import ResultsPage from './ResultsPage';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import { getThemeProps } from '@material-ui/styles';
