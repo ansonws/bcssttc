@@ -12,7 +12,8 @@ import EventForm from './EventForm';
 function getSteps() {
   return [
     'School Information', 
-    'Events', 
+    'Teams', 
+    'Singles', 
     'Fees'
   ];
 }
@@ -26,28 +27,28 @@ class EntryNewPage extends Component {
     position: '',
     email: '',
     phoneNumber: '',
-    teams: [
-      {
+    teams: {
+      "Boys Team A": {
         gender: 'Boys',
         tier: 'A',
-        playerCount: 0
+        players: []
       },
-      {
+      "Boys Team B": {
         gender: 'Boys',
         tier: 'B',
-        playerCount: 0
+        players: []
       },
-      {
+      "Girls Team A": {
         gender: 'Girls',
         tier: 'A',
-        playerCount: 0
+        players: []
       },
-      {
+      "Girls Team B": {
         gender: 'Girls',
         tier: 'B',
-        playerCount: 0
+        players: []
       }
-    ]
+    }
   }
 
   getStepContent = (step) => {
@@ -62,10 +63,13 @@ class EntryNewPage extends Component {
       case 1:
         return (
           <EventForm 
-            handleChange={this.handleDropDownChange}
+            handleDropDownChange={this.handleDropDownChange}
+            handleTeamPlayerChange={this.handleTeamPlayerChange}
             formValues={this.state}
           />
         )
+      case 2:
+        return 'Confirmation';
       case 2:
         return 'Confirmation';
       default:
@@ -94,18 +98,37 @@ class EntryNewPage extends Component {
     });
   }
 
-  handleDropDownChange = (input, index) => e => {
-    const teams = [...this.state.teams]
-    teams[index].playerCount = e.target.value;
+  handleDropDownChange = (team, index) => e => {
+    const teams = {...this.state.teams}
+    const players = Array.from({length: e.target.value}).fill({
+      "first_name": '',
+      "last_name": '',
+      "grade": 7,
+      "rating": 0,
+    });
+    teams[team[0]] = {...teams[team[0]], players}
+    this.setState({teams})
+  }
+
+  handleTeamPlayerChange = (team, playerIndex, value) => e => {
+    const teams = {
+      ...this.state.teams,
+      [team]: {
+        ...this.state.teams[team],
+        players: [
+          ...this.state.teams[team].players,
+        ]
+      }
+    }
+    teams[team].players[playerIndex] = {
+      ...teams[team].players[playerIndex],
+      [value]: e.target.value,
+    }
     this.setState({teams})
   }
 
   handleChange = input => e => {
-    console.log(e.target.value);
-    console.log(input);
-    console.log(this.state.teams[0].playerCount);
     this.setState({[input]: e.target.value})
-    // this.setState({teams: e.target.value})
   }
 
   render () {

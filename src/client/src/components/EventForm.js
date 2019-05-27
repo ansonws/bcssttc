@@ -34,13 +34,14 @@ const useStyles = makeStyles(theme => ({
 
 function EventForm(props) {
   const classes = useStyles();
-  const { formValues, handleChange } = props;
+  const { formValues, handleDropDownChange, handleTeamPlayerChange } = props;
   return (
     <main>
       <form>
           <TeamInput 
             teams={formValues.teams}
-            handleChange={handleChange}
+            handleDropDownChange={handleDropDownChange}
+            handleTeamPlayerChange={handleTeamPlayerChange}
           />
       </form>
     </main>
