@@ -69,6 +69,7 @@ function TeamForm(props) {
         value={team[1].players[playerIndex].grade}
         onChange={handleTeamPlayerChange(team[0], playerIndex, 'grade')}
       >
+        <option selected value></option>
         <option value={7}>7</option>
         <option value={8}>8</option>
         <option value={9}>9</option>

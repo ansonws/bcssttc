@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import DelegateForm from './DelegateForm';
 import TeamForm from './TeamForm';
+import SinglesForm from './SinglesForm';
 
 function getSteps() {
   return [
@@ -20,7 +21,7 @@ function getSteps() {
 
 class EntryNewPage extends Component {
   state = { 
-    step: 1,
+    step: 2,
     schoolName: '',
     sponsorFirstName: '',
     sponsorLastName: '',
@@ -48,7 +49,8 @@ class EntryNewPage extends Component {
         tier: 'B',
         players: []
       }
-    }
+    },
+    singles: []
   }
 
   getStepContent = (step) => {
@@ -63,13 +65,19 @@ class EntryNewPage extends Component {
       case 1:
         return (
           <TeamForm 
+            teams={this.state.teams}
             handleDropDownChange={this.handleDropDownChange}
             handleTeamPlayerChange={this.handleTeamPlayerChange}
-            teams={this.state.teams}
           />
         )
       case 2:
-        return 'Confirmation';
+        return (
+          <SinglesForm
+            singles={this.state.singles}
+            handleAddSinglesPlayerClick={this.handleAddSinglesPlayerClick}
+            handleSinglesPlayerChange={this.handleSinglesPlayerChange}
+          />
+        )
       case 2:
         return 'Confirmation';
       default:
@@ -103,11 +111,31 @@ class EntryNewPage extends Component {
     const players = Array.from({length: e.target.value}).fill({
       "first_name": '',
       "last_name": '',
-      "grade": 7,
+      "grade": '',
       "rating": 0,
     });
     teams[team[0]] = {...teams[team[0]], players}
     this.setState({teams})
+  }
+
+  handleAddSinglesPlayerClick = e => {
+    const singles = [...this.state.singles];
+    singles.push({
+      "first_name": '',
+      "last_name": '',
+      "grade": '',
+      "rating": 0,
+      "gender": '',
+    })
+    this.setState({singles})
+  }
+
+  handleSinglesPlayerChange = (index, value) => e => {
+    const singles = [...this.state.singles]
+    const player = {...this.state.singles[index]};
+    player[value] = e.target.value;
+    singles[index] = player;
+    this.setState({ singles })
   }
 
   handleTeamPlayerChange = (team, playerIndex, value) => e => {
@@ -200,54 +228,3 @@ class EntryNewPage extends Component {
 }
 
 export default EntryNewPage;
-
-// class EntryNewPage extends Component {
-//   state = { 
-//     step: 1,
-//     schoolName: '',
-//     sponsorFirstName: '',
-//     sponsorLastName: '',
-//     position: '',
-//     email: '',
-//     phoneNumber: ''
-//   }
-
-//   nextStep = () => {
-
-//   }
-
-//   previousStep = () => {
-//     const { step } = this.state;
-//     this.setState({
-//       step: step - 1
-//     });
-//   }
-
-//   handleChange = input => e => {
-//     this.setState({[input]: e.target.value})
-//   }
-
-//   render() { 
-
-
-//     if (step === 1) {
-//       return (
-//         <DelegateForm 
-//           nextStep={this.nextStep}
-//           handleChange={this.handleChange}
-//           values={values}
-//         />
-//       )
-//     } else if (step === 2) {
-//       return (
-//         <EntryNewPage
-//           nextStep={this.nextStep}
-//           handleChange={this.handleChange}
-//           values={values}
-//         />
-//       )
-//     }
-//   }
-// }
- 
-// export default EntryNewPage;
