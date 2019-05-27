@@ -9,19 +9,20 @@ import Container from '@material-ui/core/Container';
 import DelegateForm from './DelegateForm';
 import TeamForm from './TeamForm';
 import SinglesForm from './SinglesForm';
+import EntryFormConfirmation from './EntryFormConfirmation';
 
 function getSteps() {
   return [
     'School Information', 
     'Teams', 
     'Singles', 
-    'Fees'
+    'Confirmation'
   ];
 }
 
 class EntryNewPage extends Component {
   state = { 
-    step: 2,
+    step: 3,
     schoolName: '',
     sponsorFirstName: '',
     sponsorLastName: '',
@@ -78,8 +79,12 @@ class EntryNewPage extends Component {
             handleSinglesPlayerChange={this.handleSinglesPlayerChange}
           />
         )
-      case 2:
-        return 'Confirmation';
+      case 3:
+        return (
+          <EntryFormConfirmation 
+            formValues={this.state}
+          />
+        )
       default:
         return 'Unknown stepIndex';
     }
@@ -160,32 +165,15 @@ class EntryNewPage extends Component {
   }
 
   render () {
-    const { 
-      step,
-      schoolName,
-      sponsorFirstName,
-      sponsorLastName,
-      position,
-      email,
-      phoneNumber,
-    } = this.state;
-
-    const values = { 
-      schoolName,
-      sponsorFirstName,
-      sponsorLastName,
-      position,
-      email,
-      phoneNumber,
-    }
+    const { step } = this.state;
 
     const steps = getSteps();
+
     const { 
       getStepContent,
       handleNextStep,
       handlePreviousStep,
       handleReset,
-      handleChange,
     } = this;
 
     return (
@@ -215,7 +203,7 @@ class EntryNewPage extends Component {
                 Back
               </Button>
               <Button variant="contained" color="primary" onClick={handleNextStep}>
-                {step === steps.length - 1 ? 'Finish' : 'Next'}
+                {step === steps.length - 1 ? 'Submit' : 'Next'}
               </Button>
             </div>
           </div>
