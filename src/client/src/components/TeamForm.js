@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import PhoneNumberInput from './PhoneNumberInput';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles(theme => ({
@@ -21,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function TeamInput(props) {
+function TeamForm(props) {
   const classes = useStyles();
   const { 
     teams, 
@@ -95,4 +94,4 @@ function TeamInput(props) {
   )
 }
 
-export default TeamInput;
+export default TeamForm;

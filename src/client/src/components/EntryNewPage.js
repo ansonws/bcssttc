@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import DelegateForm from './DelegateForm';
-import EventForm from './EventForm';
+import TeamForm from './TeamForm';
 
 function getSteps() {
   return [
@@ -62,10 +62,10 @@ class EntryNewPage extends Component {
         )
       case 1:
         return (
-          <EventForm 
+          <TeamForm 
             handleDropDownChange={this.handleDropDownChange}
             handleTeamPlayerChange={this.handleTeamPlayerChange}
-            formValues={this.state}
+            teams={this.state.teams}
           />
         )
       case 2:
