@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-const homeImage = 'images/semiahmoo1.jpeg';
 
 const styles = makeStyles(theme => ({
   link: {
@@ -8,9 +7,8 @@ const styles = makeStyles(theme => ({
   },
   homePage: {
     height: 1356,
-    backgroundImage: `url(${homeImage})`,
     backgroundRepeat: "no-repeat",
-    backgroundColor: "black"
+    backgroundSize: "contain"
   },
   listDivider: {
     width: '100%',
