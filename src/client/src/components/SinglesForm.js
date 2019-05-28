@@ -27,7 +27,6 @@ function SinglesForm(props) {
   const { handleAddSinglesPlayerClick, handleSinglesPlayerChange, singles } = props;
   return (
     <div>
-      <form>
       {Array.from({length: singles.length}).map((player, playerIndex) => (
       <span key={playerIndex}>
       <TextField
@@ -78,7 +77,7 @@ function SinglesForm(props) {
         margin="normal"
         helperText="If no rating is entered, player may not be seeded"
         value={singles[playerIndex].rating}
-        onChange={handleSinglesPlayerChange()}
+        onChange={handleSinglesPlayerChange(playerIndex, 'rating')}
       />
       </span>
       ))}
@@ -90,7 +89,6 @@ function SinglesForm(props) {
       >
         <AddIcon color="secondary" />
       </Fab>
-      </form>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Tournament } from "../api/tournament";
+import Tournament from "../api/tournament";
 import ListDividers from './ListDividers';
 
 class TournamentIndexPage extends Component {

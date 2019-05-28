@@ -1,6 +1,6 @@
 import { BASE_URL } from "../config";
 
-export const Tournament = {
+const Tournament = {
   index() {
     return fetch(`${BASE_URL}/tournaments`, {
       credentials: "include"
@@ -12,3 +12,5 @@ export const Tournament = {
     }).then(res => res.json());
   }
 }
+
+export default Tournament;

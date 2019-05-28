@@ -10,6 +10,7 @@ import DelegateForm from './DelegateForm';
 import TeamForm from './TeamForm';
 import SinglesForm from './SinglesForm';
 import EntryFormConfirmation from './EntryFormConfirmation';
+import Season from '../api/season';
 
 function getSteps() {
   return [
@@ -22,7 +23,8 @@ function getSteps() {
 
 class EntryNewPage extends Component {
   state = { 
-    step: 3,
+    step: 0,
+    edition: 49,
     schoolName: '',
     sponsorFirstName: '',
     sponsorLastName: '',
@@ -164,11 +166,14 @@ class EntryNewPage extends Component {
     this.setState({[input]: e.target.value})
   }
 
+  createSeason = e => {
+    e.preventDefault();
+    Season.create(6, {...this.state});
+  }
+
   render () {
     const { step } = this.state;
-
     const steps = getSteps();
-
     const { 
       getStepContent,
       handleNextStep,
@@ -194,7 +199,9 @@ class EntryNewPage extends Component {
           </div>
         ) : (
           <div>
-            <Typography >{getStepContent(step)}</Typography>
+            <Typography >
+              <form>
+                {getStepContent(step)}
             <div>
               <Button
                 disabled={step === 0}
@@ -202,10 +209,26 @@ class EntryNewPage extends Component {
               >
                 Back
               </Button>
-              <Button variant="contained" color="primary" onClick={handleNextStep}>
-                {step === steps.length - 1 ? 'Submit' : 'Next'}
-              </Button>
+                {step === steps.length - 1? (
+                  <Button 
+                    variant="contained" 
+                    color="primary"
+                    onClick={e => this.createSeason(e)}
+                  >
+                    Submit
+                  </Button>
+                  ) : (
+                  <Button 
+                    variant="contained" 
+                    color="primary" 
+                    onClick={handleNextStep}
+                  >
+                    Next
+                  </Button>
+                )}
             </div>
+            </form>
+            </Typography>
           </div>
         )}
       </div>

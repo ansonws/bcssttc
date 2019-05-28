@@ -26,7 +26,6 @@ function DelegateForm(props) {
   const { formValues, handleChange } = props;
   return (
     <main>
-      <form>
       <TextField
         label="School Name"
         style={{ margin: 8 }}
@@ -79,7 +78,6 @@ function DelegateForm(props) {
       <PhoneNumberInput 
         handleChange={handleChange}
       />
-      </form>
     </main>
   )
 }

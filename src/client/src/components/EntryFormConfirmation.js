@@ -11,7 +11,7 @@ function EntryFormConfirmation(props) {
     teams,
     singles
   } = props.formValues;
-  console.log(Object.entries(teams))
+  
   return (
     <div>
       <h1>Confirmation</h1>
@@ -34,7 +34,6 @@ function EntryFormConfirmation(props) {
                     Name: {player.last_name}, {player.first_name} Grade {player.grade}
                   </li>
                 ))}
-                <li></li>
               </ul>
             </div>
           ) : (

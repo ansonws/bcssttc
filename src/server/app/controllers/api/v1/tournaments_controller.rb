@@ -15,9 +15,6 @@ before_action :find_tournament, only: [:show, :entries]
     )
   end
 
-  def entries
-  end
-
   private
 
   def find_tournament
