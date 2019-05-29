@@ -1,11 +1,11 @@
 tournament48 = Tournament.create(
   edition: 48,
-  date: Time.now.strftime("%b %-d, %Y")
+  year: 2019
 )
 
 tournament49 = Tournament.create(
   edition: 49,
-  date: Time.now.strftime("%b %-d, %Y")
+  year: 2020
 )
 
 ['Boys', 'Girls'].each do |gender|
