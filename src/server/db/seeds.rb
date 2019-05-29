@@ -1,11 +1,25 @@
+tournament46 = Tournament.create(
+  edition: 46,
+  year: 2017,
+  host: "Britannia Secondary"
+)
+
+tournament47 = Tournament.create(
+  edition: 47,
+  year: 2018,
+  host: "St. George's Senior School"
+)
+
 tournament48 = Tournament.create(
   edition: 48,
-  year: 2019
+  year: 2019,
+  host: 'Semiahmoo Secondary'
 )
 
 tournament49 = Tournament.create(
   edition: 49,
-  year: 2020
+  year: 2020,
+  host: 'Burnaby North Secondary'
 )
 
 ['Boys', 'Girls'].each do |gender|
