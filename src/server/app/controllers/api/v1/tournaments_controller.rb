@@ -18,7 +18,7 @@ before_action :find_tournament, only: [:show, :entries]
   private
 
   def find_tournament
-    @tournament ||= tournament.find params[:id]
+    @tournament ||= Tournament.friendly.find params[:id]
   end
 
   # def tournament_params

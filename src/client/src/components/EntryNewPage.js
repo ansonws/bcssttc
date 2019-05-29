@@ -168,7 +168,7 @@ class EntryNewPage extends Component {
 
   createSeason = e => {
     e.preventDefault();
-    Season.create(6, {...this.state});
+    Season.create(2020, {...this.state});
   }
 
   render () {

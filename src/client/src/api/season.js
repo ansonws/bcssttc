@@ -1,8 +1,8 @@
 import { BASE_URL } from "../config";
 
 const Season = {
-  create(id, params) {
-    return fetch(`${BASE_URL}/tournaments/${id}/entries`, {
+  create(year, params) {
+    return fetch(`${BASE_URL}/tournaments/${year}/entries`, {
       method: "POST",
       credentials: "include",
       headers: {
