@@ -8,7 +8,9 @@ const styles = makeStyles(theme => ({
   homePage: {
     height: 1356,
     backgroundRepeat: "no-repeat",
-    backgroundSize: "contain"
+    backgroundSize: "contain",
+    paddingLeft: '12em',
+    paddingTop: '10em',
   },
   listDivider: {
     width: '100%',

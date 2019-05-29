@@ -5,5 +5,11 @@ class Entry < ApplicationRecord
   
   has_one :team
 
-  validates :event_id, uniqueness: { scope: :competitor_id }
+  validates :event_id, uniqueness: { scope: [:competitor_id, :competitor_type] }
 end
+
+# competitor_id: 2482 type:Tenure -> Rollback
+# competitor_id: 2483, type:Tenure -> Rollback
+
+# 2488
+# 

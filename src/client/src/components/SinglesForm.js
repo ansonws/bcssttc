@@ -66,8 +66,8 @@ function SinglesForm(props) {
         onChange={handleSinglesPlayerChange(playerIndex, 'gender')}
       >
         <option selected value></option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
+        <option value="Boys">Boys</option>
+        <option value="Girls">Girls</option>
       </select>
       <TextField
         id="standard-number"

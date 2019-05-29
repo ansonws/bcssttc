@@ -16,7 +16,7 @@ function App() {
       </header>
       <Switch>
         <Route exact path="/tournaments" component={TournamentIndexPage} />
-        <Route exact path="/tournaments/new" component={EntryNewPage} />
+        <Route exact path="/tournaments/2020/entries/new" component={EntryNewPage} />
         <Route exact path="/results" component={ResultsPage} />
         <Route exact path="/" component={HomePage} />
       </Switch>

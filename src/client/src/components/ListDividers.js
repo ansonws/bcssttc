@@ -15,7 +15,7 @@ function ListDividers(props) {
           props.tournaments.map(tournament => 
       
         <Link to={
-          new Date(tournament.date).getYear() === new Date().getYear() ? (
+          tournament.year === new Date().getYear() ? (
             `tournaments/${tournament.id}/entries`
             ) : (
             `tournaments/${tournament.id}/events`
@@ -23,7 +23,7 @@ function ListDividers(props) {
           className={classes.link}
           key={tournament.id}>
             <ListItem button divider>
-              <ListItemText primary={new Date(tournament.date).getYear() + 1900} />
+              <ListItemText primary={tournament.year} />
             </ListItem>
           </Link>
         )

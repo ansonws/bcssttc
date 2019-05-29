@@ -5,4 +5,6 @@ class Season < ApplicationRecord
   belongs_to :school
   belongs_to :sponsor
   belongs_to :tournament
+
+  validates :school_id, uniqueness: {scope: :tournament_id}
 end
