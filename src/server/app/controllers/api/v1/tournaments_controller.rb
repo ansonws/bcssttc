@@ -21,7 +21,4 @@ before_action :find_tournament, only: [:show, :entries]
     @tournament ||= Tournament.friendly.find params[:id]
   end
 
-  # def tournament_params
-  #   params.require(:tournament).permit(:edition, :date)
-  # end
 end

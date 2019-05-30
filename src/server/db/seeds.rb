@@ -1,14 +1,14 @@
-tournament46 = Tournament.create(
-  edition: 46,
-  year: 2017,
-  host: "Britannia Secondary"
-)
+# tournament46 = Tournament.create(
+#   edition: 46,
+#   year: 2017,
+#   host: "Britannia Secondary"
+# )
 
-tournament47 = Tournament.create(
-  edition: 47,
-  year: 2018,
-  host: "St. George's Senior School"
-)
+# tournament47 = Tournament.create(
+#   edition: 47,
+#   year: 2018,
+#   host: "St. George's Senior School"
+# )
 
 tournament48 = Tournament.create(
   edition: 48,
@@ -135,11 +135,12 @@ end
 Event.where(tournament_id: tournament49.id, category: 'Singles').each do |event|
   Tenure.joins(:player).where("players.gender = ?", event.gender).each do |tenure|
     if rand(1..10) > 1
-        Entry.create(
+        e = Entry.create(
             competitor_id: tenure.id,
             event_id: event.id,
             competitor_type: 'Tenure'
         )
+        
     end
   end
 end
