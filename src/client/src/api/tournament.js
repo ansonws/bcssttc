@@ -6,8 +6,8 @@ const Tournament = {
       credentials: "include"
     }).then(res => res.json());
   },
-  show(id) {
-    return fetch(`${BASE_URL}/tournaments/${id}`, {
+  show(year) {
+    return fetch(`${BASE_URL}/tournaments/${year}`, {
       credentials: "include"
     }).then(res => res.json());
   }

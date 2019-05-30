@@ -1,5 +1,17 @@
 class Api::V1::SeasonsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :find_tournament, only: :index
+
+  def index 
+    seasons = Season.where(tournament_id: @tournament.id)
+    season = Season.last
+
+    render(
+      json: seasons,
+      each_serializer: SeasonCollectionSerializer
+    ) 
+    
+  end
 
   def create
     sponsor = Sponsor.create(
@@ -55,8 +67,8 @@ class Api::V1::SeasonsController < ApplicationController
           )
         end 
 
-        Entry.create(
-          event_id: Event.find_by(
+        entry = Entry.create(
+            event_id: Event.find_by(
             gender: team_values[:gender],
             category: 'Team',
             tournament_id: Tournament.find_by(edition: 49).id
@@ -64,6 +76,8 @@ class Api::V1::SeasonsController < ApplicationController
           competitor_id: team.id,
           competitor_type: 'Team'
         )
+
+        team[:entry_id] = entry.id
       end
     end
 
@@ -110,4 +124,7 @@ class Api::V1::SeasonsController < ApplicationController
 
   private 
 
+  def find_tournament
+    @tournament ||= Tournament.friendly.find 1
+  end
 end

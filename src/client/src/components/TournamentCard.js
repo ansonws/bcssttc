@@ -43,7 +43,11 @@ function TournamentCard(props) {
       <CardActions style={{justifyContent: 'center'}}>
         {tournament.year === 2020 ? (
           <>
-            <Button size="large" color="primary">
+            <Button 
+              size="large" 
+              color="primary"
+              href={`/tournaments/${tournament.year}/entries`}
+            >
               Entries
             </Button>
             <Button size="large" color="primary">

@@ -10,7 +10,12 @@ const Season = {
       },
       body: JSON.stringify(params)
     }).then(res => res.json())
-  }
+  },
+  index(year) {
+    return fetch(`${BASE_URL}/tournaments/${year}/entries`, {
+      credentials: "include"
+    }).then(res => res.json());
+  },
 }
 
 export default Season;
