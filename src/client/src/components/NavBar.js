@@ -18,7 +18,7 @@ function NavBar() {
           </NavLink>
           <NavLink exact to="/tournaments" className={classes.link}>
             <Button color="secondary">
-              Tournament
+              Tournaments
             </Button>
           </NavLink>
           <NavLink exact to="/results" className={classes.link}>
