@@ -1,14 +1,14 @@
-# tournament46 = Tournament.create(
-#   edition: 46,
-#   year: 2017,
-#   host: "Britannia Secondary"
-# )
+tournament46 = Tournament.create(
+  edition: 46,
+  year: 2017,
+  host: "Britannia Secondary"
+)
 
-# tournament47 = Tournament.create(
-#   edition: 47,
-#   year: 2018,
-#   host: "St. George's Senior School"
-# )
+tournament47 = Tournament.create(
+  edition: 47,
+  year: 2018,
+  host: "St. George's Senior School"
+)
 
 tournament48 = Tournament.create(
   edition: 48,
