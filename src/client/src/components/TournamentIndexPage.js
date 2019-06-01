@@ -16,7 +16,7 @@ class TournamentIndexPage extends Component {
   render() {
       const {tournaments} = this.state;
       return (
-        <ListDividers tournaments={tournaments}/>
+        <ListDividers tournaments={tournaments} />
       );
   }
 }
