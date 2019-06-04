@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Righteous|Roboto&display=swap');
 
 body {
   background: darkgrey;
@@ -8,6 +8,134 @@ footer {padding: 4em;}
 
 footer p {font-size: .85em;}
 
-.description {
-  color: white;
+.description {color: white;}
+
+.dashboard {
+  background-color: #CACFD6;
+  position:relative; 
+  text-align: center; 
+  overflow: hidden; 
+  color: #364976
+} 
+
+#bracket {
+  display: flex;
+  flex-direction: row;
+  margin: 2em;
+  background-color: lightblue;
+  justify-content: center;
+}
+
+#rounds {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.round {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.round-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+.round-title {
+  color: #364976;
+  text-align: center;
+  margin-top: 1.3em;
+  padding: 0.2em;
+  border: 1.5px solid #364976;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 83%;
+}
+
+.matchup {
+  margin:0;
+  width: 100%;
+  padding: 10px 0;
+  height: 60px;
+  transition: all 0.2s;
+}
+
+.r-8 .matchup {
+  margin: 0; 
+  height: 60px;
+  padding: 50px 0;
+}
+
+.r-4 .matchup {
+  margin: 0; 
+  height: 60px;
+  padding: 130px 0;
+}
+
+.r-2 .matchup {
+  margin: 0; 
+  height: 60px;
+  padding: 290px 0;
+}
+
+.r-1 .matchup {
+  margin: 0; 
+  height: 60px;
+  padding: 267px 0;
+}
+
+.team {
+  background-color: #fff;
+  color: #364976;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 0 0 0 5px;
+  margin: 3px 0;
+  height: 25px; 
+  line-height: 25px;
+  white-space: nowrap; 
+  overflow: hidden;
+  position: relative;
+}
+
+.lost {
+  opacity: 0.4;
+}
+
+#champion {
+  background-color: #fff;
+  color: #364976;
+  font-family: 'Righteous', cursive;
+  font-size: 25px;
+  text-align: center;
+  line-height: 45px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 0 5px;
+  margin: 3px 0;
+  height: 100px; 
+  overflow: hidden;
+  position: relative;
+}
+
+.team:hover {
+  border: 1.5px solid #364976;
+  cursor: pointer;
+}
+
+.score {
+  margin: 0;
+  float: right;
+  color: #364976;
+  font-family: 'Righteous', cursive;
+  padding: 0 10px;
+  background-color: #FFC857;
+  font-weight: bold;
+  right: 5px;
+}
+
+.connector {
+  width: 50px;
 }

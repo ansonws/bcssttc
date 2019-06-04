@@ -21,6 +21,11 @@ function NavBar() {
               Tournaments
             </Button>
           </NavLink>
+          <NavLink exact to="/tournaments/2020/events/boys-singles/draw" className={classes.link}>
+            <Button color="secondary">
+              Draw
+            </Button>
+          </NavLink>
           <NavLink exact to="/results" className={classes.link}>
             <Button color="secondary">
               Results

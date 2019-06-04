@@ -4,7 +4,11 @@ import styles from '../designs/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Icon from '@material-ui/core/Icon';
+import createTypography from '@material-ui/core/styles/createTypography';
+// import SemiahmooMap from './SemiahmooMap';
+
 const homeImage = 'images/semiahmoo-banner.jpeg';
+const semiahmoo = 'images/tournament_cards/2019.jpg';
 
 function HomePage() {
   const classes = styles();
@@ -14,7 +18,7 @@ function HomePage() {
         className={classes.homePage}
         style={{
           backgroundImage: `url(${homeImage})`,
-          // backgroundColor: 'blue'
+          height: 1500
         }}
         >
         <NavLink to="/tournaments" className={classes.link}>
@@ -55,8 +59,26 @@ function HomePage() {
           </Fab>
         </NavLink>
       </div>
-      <div className="description" style={{backgroundColor: 'purple', fontFamily: 'Montserrat'}}>
+      <div 
+        className="description" 
+        className={classes.homePage}
+        style={{
+          backgroundImage: `url(${semiahmoo})`, 
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          opacity: '0.3'
+        }}>
+        <div 
+          style={{
+            height: '50%',
+            width: '70%',
+            fontFamily: 'Montserrat',
+            fontSize: 32
+          }}  
+        >
         For years, schools have gotten together for a weekend to compete for the Table Tennis provincial title for their school team. This yearly event has attracted schools from multiple districts across BC to send out their best players to represent. 
+        </div>
       </div>
     </main>
   )
