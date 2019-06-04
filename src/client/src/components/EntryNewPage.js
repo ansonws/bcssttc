@@ -169,6 +169,7 @@ class EntryNewPage extends Component {
   createSeason = e => {
     e.preventDefault();
     Season.create(2020, {...this.state});
+    this.props.history.push('/confirm');
   }
 
   render () {
@@ -183,7 +184,11 @@ class EntryNewPage extends Component {
 
     return (
       <div >
-      <Stepper activeStep={step} alternativeLabel>
+      <Stepper 
+        activeStep={step} 
+        alternativeLabel
+        style={{ backgroundColor: '#E8E8E8' }}
+      >
         {steps.map(label => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>

@@ -5,6 +5,7 @@ import TournamentIndexPage from './TournamentIndexPage';
 import EntryNewPage from './EntryNewPage';
 import EntriesIndexPage from './EntriesIndexPage';
 import ResultsPage from './ResultsPage';
+import ConfirmationPage from './ConfirmationPage';
 import Bracket from './Bracket';
 import NavBar from './NavBar';
 import Footer from './Footer';
@@ -21,11 +22,10 @@ function App() {
         <Route exact path="/tournaments/2020/entries" component={EntriesIndexPage} />
         <Route exact path="/tournaments" component={TournamentIndexPage} />
         <Route exact path="/results" component={ResultsPage} />
+        <Route exact path="/confirm" component={ConfirmationPage} />
         <Route exact path="/" component={HomePage} />
       </Switch>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </BrowserRouter>
   )
 }
