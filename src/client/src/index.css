@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Righteous|Roboto&display=swap');
 
 body {
-  background: darkgrey;
+  background: #E8E8E8;
 }
 
 footer {padding: 4em;}
@@ -11,18 +11,22 @@ footer p {font-size: .85em;}
 .description {color: white;}
 
 .dashboard {
+  display: flex;
+  justify-content: 'center';
+  align-items: 'center';
   background-color: #CACFD6;
   position:relative; 
   text-align: center; 
-  overflow: hidden; 
-  color: #364976
+  overflow: contain; 
+  color: #364976;
+  height: 30vh;
 } 
 
 #bracket {
   display: flex;
   flex-direction: row;
   margin: 2em;
-  background-color: lightblue;
+  /* background-color: lightblue; */
   justify-content: center;
 }
 
@@ -138,4 +142,24 @@ footer p {font-size: .85em;}
 
 .connector {
   width: 50px;
+}
+
+.sponsorship {
+  position: relative;
+  float: left;
+  width:  200px;
+  height: 200px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.table-header:hover {
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+.bracket-title {
+  color:#364976;
+  text-align: center;
 }
