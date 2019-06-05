@@ -17,13 +17,13 @@ class Entries extends Component {
   }
 
   componentDidMount() {
-    Season.index(2019).then(seasons => {
+    Season.index(2020).then(seasons => {
       this.setState({ 
         isLoading: false, 
         seasons,
         sortASC: {
           school: false,
-          district: false,
+          city: false,
           boysTeams: false,
           girlsTeams: false,
           boysSingles: false,
@@ -50,15 +50,15 @@ class Entries extends Component {
               return 1;
             }
             return schoolName;
-          case 'district':
-            let districtName = 0;
-            if ( a.school.name < b.school.name ){
+          case 'city':
+            let city = 0;
+            if ( a.school.city < b.school.city ) {
               return -1;
             }
-            if ( a.school.name > b.school.name ){
+            if ( a.school.city > b.school.city ) {
               return 1;
             }
-            return districtName;
+            return city;
           case 'boysTeams':
             return a.teams.filter(team => team.gender === 'Boys').length - b.teams.filter(team => team.gender === 'Boys').length;
           case 'girlsTeams':
@@ -86,15 +86,15 @@ class Entries extends Component {
               return -1;
             }
             return schoolName;
-          case 'district':
-            let districtName = 0;
-            if ( a.school.name < b.school.name ){
+          case 'city':
+            let city = 0;
+            if ( a.school.city < b.school.city ){
               return 1;
             }
-            if ( a.school.name > b.school.name ){
+            if ( a.school.city > b.school.city ){
               return -1;
             }
-            return districtName;
+            return city;
           case 'boysTeams':
             return b.teams.filter(team => team.gender === 'Boys').length - a.teams.filter(team => team.gender === 'Boys').length;
           case 'girlsTeams':
@@ -131,13 +131,13 @@ class Entries extends Component {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell onClick={() => this.handleSort('school')}>School</TableCell>
-            <TableCell onClick={() => this.handleSort('district')}>District</TableCell>
-            <TableCell onClick={() => this.handleSort('boysTeams')} align="right">Boys Teams</TableCell>
-            <TableCell onClick={() => this.handleSort('girlsTeams')} align="right">Girls Teams</TableCell>
-            <TableCell onClick={() => this.handleSort('boysSingles')} align="right">Boys Singles</TableCell>
-            <TableCell onClick={() => this.handleSort('girlsSingles')} align="right">Girls Singles</TableCell>
-            <TableCell onClick={() => this.handleSort('total')} align="right">Student Athletes Competing</TableCell>
+            <TableCell className="table-header" onClick={() => this.handleSort('school')}>School</TableCell>
+            <TableCell className="table-header" onClick={() => this.handleSort('city')}>District</TableCell>
+            <TableCell className="table-header" onClick={() => this.handleSort('boysTeams')} align="right">Boys Teams</TableCell>
+            <TableCell className="table-header" onClick={() => this.handleSort('girlsTeams')} align="right">Girls Teams</TableCell>
+            <TableCell className="table-header" onClick={() => this.handleSort('boysSingles')} align="right">Boys Singles</TableCell>
+            <TableCell className="table-header" onClick={() => this.handleSort('girlsSingles')} align="right">Girls Singles</TableCell>
+            <TableCell className="table-header" onClick={() => this.handleSort('total')} align="right">Student Athletes Competing</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

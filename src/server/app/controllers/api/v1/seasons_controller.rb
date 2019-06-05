@@ -10,7 +10,6 @@ class Api::V1::SeasonsController < ApplicationController
       json: seasons,
       each_serializer: SeasonCollectionSerializer
     ) 
-    
   end
 
   def create
@@ -26,7 +25,7 @@ class Api::V1::SeasonsController < ApplicationController
     if school.nil?
       school = School.create(
         name: params[:schoolName], 
-        city: 'Vancouver'
+        city: params[:city],
       )
     end
     
