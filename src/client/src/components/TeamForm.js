@@ -23,17 +23,20 @@ const useStyles = makeStyles(theme => ({
 function TeamForm(props) {
   const classes = useStyles();
   const { 
+    formValues,
     teams, 
     handleDropDownChange, 
     handleTeamPlayerChange 
   } = props;
+
   return (
     <div>
+      <h1 style={{textAlign: 'center'}}>Teams ($85 per team)</h1>
+      <h2 style={{textAlign: 'center'}}>Fees: {formValues.singles.length * 12 + 85}</h2>
       {Object.entries(teams).map((team, index) => (
-      <React.Fragment key={index}>
-      <h2>{team[0]}</h2>
-
-      <label htmlFor={team[0]}>Number of Players</label>
+      <div key={index} style={{marginLeft: '70px'}}>
+      <h2 style={{marginTop: '50px'}}>{team[0]}</h2>
+      <label htmlFor={team[0]} style={{lineHeight: '3'}}>Number of Players</label>
       <select 
         name={team.gender + index} 
         id={team.gender + index}
@@ -47,7 +50,7 @@ function TeamForm(props) {
       </select>
       <br/>
       {Array.from({length: team[1].players.length}).map((player, playerIndex) => (
-      <span key={playerIndex}>
+      <span key={playerIndex} style={{marginTop: '20px'}}>
       <TextField
         label="First Name"
         style={{ margin: 8 }}
@@ -62,7 +65,7 @@ function TeamForm(props) {
         value={team[1].players[playerIndex].last_name}
         onChange={handleTeamPlayerChange(team[0], playerIndex, 'last_name')}
       />
-      <label htmlFor="grade">Grade</label>
+      <label htmlFor="grade" style={{lineHeight: '5.6'}}>Grade</label>
       <select 
         name="grade" 
         id="grade"
@@ -82,14 +85,16 @@ function TeamForm(props) {
       label="TTCAN Rating (if exists)"
         type="number"
         className={classes.textField}
+        style={{marginTop: '7px', width: '30%'}}
         margin="normal"
         helperText="If no rating is entered, player may not be seeded"
         value={team[1].players[playerIndex].rating}
         onChange={handleTeamPlayerChange(team[0], playerIndex, 'rating')}
       />
+      <br/>
       </span>
       ))}
-      </React.Fragment>
+      </div>
       ))}
     </div>
   )

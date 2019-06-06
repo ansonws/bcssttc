@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Fab from '@material-ui/core/Fab';
+import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles(theme => ({
@@ -24,9 +24,11 @@ const useStyles = makeStyles(theme => ({
 
 function SinglesForm(props) {
   const classes = useStyles();
-  const { handleAddSinglesPlayerClick, handleSinglesPlayerChange, singles } = props;
+  const { formValues, handleAddSinglesPlayerClick, handleRemoveSinglesPlayerClick, handleSinglesPlayerChange, singles } = props;
   return (
     <div>
+      <h1 style={{textAlign: 'center'}}>Singles Players ($12 per Player)</h1>
+      <h2 style={{textAlign: 'center', margin: '40px'}}>Fees: {formValues.singles.length * 12 + 85}</h2>
       {Array.from({length: singles.length}).map((player, playerIndex) => (
       <span key={playerIndex}>
       <TextField
@@ -43,7 +45,7 @@ function SinglesForm(props) {
         value={singles[playerIndex].last_name}
         onChange={handleSinglesPlayerChange(playerIndex, 'last_name')}
       />
-      <label htmlFor="grade">Grade</label>
+      <label htmlFor="grade" style={{lineHeight: 5.6}}>Grade</label>
       <select 
         name="grade" 
         id="grade"
@@ -76,19 +78,32 @@ function SinglesForm(props) {
         className={classes.textField}
         margin="normal"
         helperText="If no rating is entered, player may not be seeded"
+        style={{width: '20%', marginTop: '7px'}}
         value={singles[playerIndex].rating}
         onChange={handleSinglesPlayerChange(playerIndex, 'rating')}
       />
       </span>
       ))}
-      <Fab 
-        color="primary" 
-        aria-label="Add" 
-        className={classes.fab}
-        onClick={handleAddSinglesPlayerClick}
-      >
-        <AddIcon color="secondary" />
-      </Fab>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
+        <Button 
+          aria-label="Remove" 
+          variant="contained"
+          className={classes.Button}
+          onClick={handleRemoveSinglesPlayerClick}
+          style={{backgroundColor: '#EC2C3E', color: 'black', margin: '50px 8px'}}
+          >
+          Remove Player
+        </Button>
+        <Button 
+          aria-label="Add" 
+          variant="contained"
+          className={classes.Button}
+          onClick={handleAddSinglesPlayerClick}
+          style={{backgroundColor: 'darkgreen', color: 'white', margin: '50px 8px'}}
+          >
+          Add Player
+        </Button>
+      </div>
     </div>
   )
 }

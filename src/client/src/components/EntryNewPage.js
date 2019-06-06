@@ -23,19 +23,38 @@ function getSteps() {
 
 class EntryNewPage extends Component {
   state = { 
-    step: 0,
+    step: 2,
     edition: 49,
     schoolName: '',
+    city: '',
     sponsorFirstName: '',
     sponsorLastName: '',
     position: '',
     email: '',
-    phoneNumber: '',
     teams: {
       "Boys Team A": {
         gender: 'Boys',
         tier: 'A',
-        players: []
+        players: [
+        {
+          "first_name": 'Kawhi',
+          "last_name": 'Leonard',
+          "grade": '12',
+          "rating": 900,
+        },
+        {
+          "first_name": 'Tiger',
+          "last_name": 'Woods',
+          "grade": '9',
+          "rating": 500,
+        },
+        {
+          "first_name": 'Elias',
+          "last_name": 'Pettersson',
+          "grade": '8',
+          "rating": 2000,
+        }
+      ]
       },
       "Boys Team B": {
         gender: 'Boys',
@@ -53,7 +72,7 @@ class EntryNewPage extends Component {
         players: []
       }
     },
-    singles: []
+    singles: [],
   }
 
   getStepContent = (step) => {
@@ -69,6 +88,7 @@ class EntryNewPage extends Component {
         return (
           <TeamForm 
             teams={this.state.teams}
+            formValues={this.state}
             handleDropDownChange={this.handleDropDownChange}
             handleTeamPlayerChange={this.handleTeamPlayerChange}
           />
@@ -77,7 +97,9 @@ class EntryNewPage extends Component {
         return (
           <SinglesForm
             singles={this.state.singles}
+            formValues={this.state}
             handleAddSinglesPlayerClick={this.handleAddSinglesPlayerClick}
+            handleRemoveSinglesPlayerClick={this.handleRemoveSinglesPlayerClick}
             handleSinglesPlayerChange={this.handleSinglesPlayerChange}
           />
         )
@@ -137,6 +159,12 @@ class EntryNewPage extends Component {
     this.setState({singles})
   }
 
+  handleRemoveSinglesPlayerClick = e => {
+    const singles = [...this.state.singles];
+    singles.pop();
+    this.setState({singles});
+  }
+
   handleSinglesPlayerChange = (index, value) => e => {
     const singles = [...this.state.singles]
     const player = {...this.state.singles[index]};
@@ -152,7 +180,7 @@ class EntryNewPage extends Component {
         ...this.state.teams[team],
         players: [
           ...this.state.teams[team].players,
-        ]
+        ] 
       }
     }
     teams[team].players[playerIndex] = {
@@ -204,13 +232,14 @@ class EntryNewPage extends Component {
           </div>
         ) : (
           <div>
-            <Typography >
-              <form>
+            <Typography>
+            <form>
                 {getStepContent(step)}
-            <div>
+            <div style={{display: 'flex', justifyContent: 'center', margin: '150px auto'}}>
               <Button
                 disabled={step === 0}
                 onClick={handlePreviousStep}
+                size="large"
               >
                 Back
               </Button>
@@ -219,14 +248,22 @@ class EntryNewPage extends Component {
                     variant="contained" 
                     color="primary"
                     onClick={e => this.createSeason(e)}
+                    size="large"
                   >
-                    Submit
+                    Complete Registration
+                    <i 
+                      className="material-icons"
+                      style={{marginLeft: '8px'}}
+                    >
+                      assignment_turned_in
+                    </i>
                   </Button>
                   ) : (
                   <Button 
                     variant="contained" 
                     color="primary" 
                     onClick={handleNextStep}
+                    size="large"
                   >
                     Next
                   </Button>
