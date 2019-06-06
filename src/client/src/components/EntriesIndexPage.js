@@ -6,6 +6,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Season from '../api/season';
+import Dialog from '@material-ui/core/Dialog';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 class Entries extends Component {
@@ -14,6 +15,14 @@ class Entries extends Component {
     sortColumn: { path: 'title', order: 'asc' },
     seasons: [],
     sortASC: {},
+    dialogOpen: false,
+    seasonSpotlight: {
+      school: {
+        name: '',
+        city: '',
+      },
+      tenures: []
+    },
   }
 
   componentDidMount() {
@@ -115,18 +124,32 @@ class Entries extends Component {
     this.setState({ seasons, sortASC })
   }
 
+  handleOpenDialog = season => {
+    console.log(season)
+    this.setState({ dialogOpen: true });
+    this.setState({seasonSpotlight: season })
+  }
+
+  handleCloseDialog = () => {
+    console.log('hi')
+    this.setState({ dialogOpen: false })
+  }
+
   render() { 
-    const { isLoading, seasons } = this.state;
+    const { isLoading, seasons, seasonSpotlight } = this.state;
     if (isLoading) {
       return <LinearProgress color="primary" variant="query" />
     }
 
     if (seasons.length === 0) {
       return (
-        <h1>No schools have signed up yet</h1>
+        <h1 style={{margin: '300px'}}>No schools have signed up yet</h1>
       )
     }
-    return (  
+    return (
+      <>
+      <div>  
+      <div>
       <Paper>
       <Table>
         <TableHead>
@@ -142,7 +165,11 @@ class Entries extends Component {
         </TableHead>
         <TableBody>
           {seasons.map(season => (
-            <TableRow key={season.id}>
+            <TableRow 
+              key={season.id} 
+              className="season-show"
+              onClick={() => this.handleOpenDialog(season)}
+            >
               <TableCell component="th" scope="season">
                 {season.school.name}
               </TableCell>
@@ -157,6 +184,25 @@ class Entries extends Component {
         </TableBody>
       </Table>
     </Paper>
+    </div>
+    <div>
+
+    
+      </div>
+    </div>
+    <Dialog
+      open={this.state.dialogOpen}
+      onClose={this.handleCloseDialog}
+    >
+    
+      <div id="entry-show-dialog">
+        <h1 style={{textAlign: 'center'}}>{seasonSpotlight.school.name}</h1>
+        {seasonSpotlight.tenures.map(tenure => (
+          <p style={{textAlign: 'center', lineHeight: '0.8'}}>{tenure.player.last_name}, {tenure.player.first_name}</p>
+        ))}
+      </div>
+  </Dialog>
+  </>
     );
   }
 }
