@@ -125,13 +125,10 @@ class Entries extends Component {
   }
 
   handleOpenDialog = season => {
-    console.log(season)
-    this.setState({ dialogOpen: true });
-    this.setState({seasonSpotlight: season })
+    this.setState({ dialogOpen: true, seasonSpotlight: season });
   }
 
   handleCloseDialog = () => {
-    console.log('hi')
     this.setState({ dialogOpen: false })
   }
 
@@ -194,8 +191,7 @@ class Entries extends Component {
       open={this.state.dialogOpen}
       onClose={this.handleCloseDialog}
     >
-    
-      <div id="entry-show-dialog">
+      <div className="dialog">
         <h1 style={{textAlign: 'center'}}>{seasonSpotlight.school.name}</h1>
         {seasonSpotlight.tenures.map(tenure => (
           <p style={{textAlign: 'center', lineHeight: '0.8'}}>{tenure.player.last_name}, {tenure.player.first_name}</p>

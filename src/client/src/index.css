@@ -188,9 +188,7 @@ select {
   border-radius: 0.25rem;
 }
 
-#entry-show-dialog {
-  opacity: 1;
-  z-index: 1002;
+.dialog {
   background-color: white;
   height: 560px;
   width: 430px;

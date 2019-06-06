@@ -1,32 +1,43 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
+import Entry from '../api/entry';
+import Dialog from '@material-ui/core/Dialog';
 
 class Bracket extends Component {
   state = {
-    seeds: [
-      "1. Fan, Zhendong",
-      "2. Lin, Gaoyuan",
-      "3. Xu, Xin",
-      "4. Tomokazu, Harimoto",
-      "5. Ma, Long",
-      "6. Boll, Timo",
-      "7. Liang, Jingkun",
-      "8. Calderano, Hugo",
-      "9. Falck, Mattias",
-      "10. Jang, Woojin",
-      "11. Lee, Sangsu",
-      "12. Ovtcharov, Dimitrij",
-      "13. Niwa, Koki",
-      "14. Mizutani, Jun",
-      "15. Pitchford, Liam",
-      "16. Franziska, Patrick",
-    ],
+    tenures: [],
+    seeds: [],
     scores: Array(30).fill('0'),
     matchup16: Array(8).fill(['','']),
     matchup8: Array(4).fill(['','']),
     matchup4: Array(2).fill(['','']),
     matchup2: ['',''],
     champion: '',
+    dialogOpen: false,
+  }
+
+  componentDidMount() {
+    let seeds = [];
+    Entry.boys_singles(2020).then(tenures => {
+      this.setState({
+        tenures
+      })
+    }).then(() => {
+      this.state.tenures.forEach((tenure) => {
+        seeds.push(`${tenure.player.last_name}, ${tenure.player.first_name} — ${tenure.rating}`)
+      })
+    }).then(() => {
+      this.setState({seeds})
+    })
+  }
+
+  handleOpenDialog = season => {
+    this.setState({ dialogOpen: true });
+    // this.setState({seasonSpotlight: season })
+  }
+
+  handleCloseDialog = () => {
+    this.setState({ dialogOpen: false })
   }
 
   shuffle = array => {
@@ -63,7 +74,7 @@ class Bracket extends Component {
       const topTwo = seeds.slice(0, 2);
       const seedSF = this.shuffle(seeds.slice(2, 4));
       const seedQF = this.shuffle(seeds.slice(4, 8));
-      const seedR16 = seeds.slice(seeds.length / 2);
+      const seedR16 = seeds.slice(8, 16);
 
       topHalf = topTwo.concat(seedSF, seedQF);
 
@@ -285,32 +296,32 @@ class Bracket extends Component {
   }
 
   render() {
-    const { matchup16, matchup8, matchup4, matchup2, champion, scores, seeds } = this.state;
+    const { matchup16, matchup8, matchup4, matchup2, champion, scores, tenures } = this.state;
     return (
       <div>
           <h1 className="bracket-title">Boys Singles</h1>
       <header class="dashboard">
-        <div style={{width: '70%', display: 'flex', align: 'left'}}>
-          <ul style={{width: '50%', listStyle: 'none', padding: '0', float: 'left'}}>
-            {seeds.slice(0, 8).map((team, index) => (
-              <li key={{index}} className="team-list-item">{team}</li>
-            ))}
-          </ul>
-          <ul style={{width: '50%', listStyle: 'none'}}>
-            {seeds.slice(8).map((team, index) => (
-              <li key={{index}} className="team-list-item">{team}</li>
-            ))}
-          </ul>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%'}}>
+        <div>
+          <Button
+            variant="contained" 
+            size="large" 
+            style={{backgroundColor: '#000', color: '#FFC857', width: '200px', marginRight: '10px'}}
+            onClick={this.handleOpenDialog}  
+          >
+            View Seeds
+          </Button>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div>
           <Button 
             variant="contained" 
             size="large" 
-            style={{backgroundColor: '#EC2C3E', width: '200px'}}
+            style={{backgroundColor: '#EC2C3E', width: '200px', marginLeft: '10px'}}
             onClick={this.handleCreateBracket}  
           >
             Create Bracket
           </Button>
+        </div>
         </div>
       </header>
       <div id="bracket">
@@ -501,6 +512,35 @@ class Bracket extends Component {
         </div>
       </div>
       </div>
+      <Dialog
+            open={this.state.dialogOpen}
+            onClose={this.handleCloseDialog}
+      >
+        <div 
+          className="dialog" 
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            height: '830px',
+          }}>
+          <table style={{textAlign: 'right'}}>
+            <thead>
+              <tr>
+                <th>Player:</th>
+                <th style={{padding: '0'}}>Rating:</th>
+              </tr>
+            </thead>
+            <tbody>
+            {tenures.map(tenure => (
+              <tr style={{paddingLeft: '10px'}}>
+                <td>{tenure.player.last_name}, {tenure.player.first_name}</td>
+                <td style={{marginLeft: '15px', paddingLeft: '30px'}}>{tenure.rating}</td>
+              </tr>
+            ))}
+            </tbody>
+          </table>
+        </div>
+      </Dialog>
       </div>
     )
   } 
