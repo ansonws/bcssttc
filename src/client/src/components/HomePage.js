@@ -18,7 +18,7 @@ function HomePage() {
         className={classes.homePage}
         style={{
           backgroundImage: `url(${homeImage})`,
-          height: 1500
+          height: 575
         }}
         >
         <NavLink to="/tournaments" className={classes.link}>
@@ -63,7 +63,7 @@ function HomePage() {
         className="description" 
         className={classes.homePage}
         style={{
-          backgroundImage: `url(${semiahmoo})`, 
+          backgroundColor: 'black', 
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -71,13 +71,18 @@ function HomePage() {
         }}>
         <div 
           style={{
-            height: '50%',
+            height: '80%',
             width: '70%',
             fontFamily: 'Montserrat',
-            fontSize: 32
+            fontSize: 32,
           }}  
         >
+          {/* <div style={{display: 'flex',}}>
+          <p style={{ color: 'white', opacity: '1' }}>
         For years, schools have gotten together for a weekend to compete for the Table Tennis provincial title for their school team. This yearly event has attracted schools from multiple districts across BC to send out their best players to represent. 
+
+          </p>
+          </div> */}
         </div>
       </div>
     </main>

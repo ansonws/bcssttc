@@ -4,22 +4,22 @@ import Button from '@material-ui/core/Button';
 class Bracket extends Component {
   state = {
     seeds: [
-      "1. Edison Huang",
-      "2. Jason Zhang",
-      "3. Max Ji",
-      "4. Andy Chen",
-      "5. David Mandelstam",
-      "6. Andrew Szeto",
-      "7. Angus Szeto",
-      "8. Thomas Yuan",
-      "9. Ethan Chen",
-      "10. Sam Ghafour",
-      "11. Charlie Dai",
-      "12. Gary Xiang",
-      "13. Victor Zhang",
-      "14. Aris Tai",
-      "15. Tommy Li",
-      "16. Jason Li",
+      "1. Fan, Zhendong",
+      "2. Lin, Gaoyuan",
+      "3. Xu, Xin",
+      "4. Tomokazu, Harimoto",
+      "5. Ma, Long",
+      "6. Boll, Timo",
+      "7. Liang, Jingkun",
+      "8. Calderano, Hugo",
+      "9. Falck, Mattias",
+      "10. Jang, Woojin",
+      "11. Lee, Sangsu",
+      "12. Ovtcharov, Dimitrij",
+      "13. Niwa, Koki",
+      "14. Mizutani, Jun",
+      "15. Pitchford, Liam",
+      "16. Franziska, Patrick",
     ],
     scores: Array(30).fill('0'),
     matchup16: Array(8).fill(['','']),
@@ -285,18 +285,33 @@ class Bracket extends Component {
   }
 
   render() {
-    const { matchup16, matchup8, matchup4, matchup2, champion, scores } = this.state;
+    const { matchup16, matchup8, matchup4, matchup2, champion, scores, seeds } = this.state;
     return (
       <div>
+          <h1 className="bracket-title">Boys Singles</h1>
       <header class="dashboard">
-      <Button 
-        variant="contained" 
-        size="large" 
-        style={{backgroundColor: '#EC2C3E', width: '200px'}}
-        onClick={this.handleCreateBracket}  
-      >
-        Create Bracket
-      </Button>
+        <div style={{width: '70%', display: 'flex', align: 'left'}}>
+          <ul style={{width: '50%', listStyle: 'none', padding: '0', float: 'left'}}>
+            {seeds.slice(0, 8).map((team, index) => (
+              <li key={{index}} className="team-list-item">{team}</li>
+            ))}
+          </ul>
+          <ul style={{width: '50%', listStyle: 'none'}}>
+            {seeds.slice(8).map((team, index) => (
+              <li key={{index}} className="team-list-item">{team}</li>
+            ))}
+          </ul>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <Button 
+            variant="contained" 
+            size="large" 
+            style={{backgroundColor: '#EC2C3E', width: '200px'}}
+            onClick={this.handleCreateBracket}  
+          >
+            Create Bracket
+          </Button>
+        </div>
       </header>
       <div id="bracket">
         <div id="rounds">

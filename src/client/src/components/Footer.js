@@ -37,10 +37,10 @@ function Footer() {
           style={{ backgroundImage: `url("/images/sponsorships/paddle-palace.png")`}}
           >
         </div>
-        {/* <p>
-          © 2019 BC Secondary School Table Tennis Championships
-        </p> */}
       </div>
+      {/* <p>
+        © 2019 BC Secondary School Table Tennis Championships
+      </p> */}
     </div>
     </footer>
   )

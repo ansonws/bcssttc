@@ -23,7 +23,7 @@ function getSteps() {
 
 class EntryNewPage extends Component {
   state = { 
-    step: 2,
+    step: 0,
     edition: 49,
     schoolName: '',
     city: '',
@@ -249,11 +249,14 @@ class EntryNewPage extends Component {
                     color="primary"
                     onClick={e => this.createSeason(e)}
                     size="large"
+                    color="primary"
+                    style={{color: '#FFC857'}}
                   >
                     Complete Registration
                     <i 
                       className="material-icons"
                       style={{marginLeft: '8px'}}
+                      style={{color: '#FFC857'}}
                     >
                       assignment_turned_in
                     </i>
@@ -263,6 +266,7 @@ class EntryNewPage extends Component {
                     variant="contained" 
                     color="primary" 
                     onClick={handleNextStep}
+                    style={{color: '#FFC857'}}
                     size="large"
                   >
                     Next

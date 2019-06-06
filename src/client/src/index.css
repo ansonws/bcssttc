@@ -18,7 +18,7 @@ footer p {font-size: .85em;}
   position:relative; 
   text-align: center; 
   overflow: contain; 
-  color: #364976;
+  color: #000;
   height: 30vh;
 } 
 
@@ -50,11 +50,11 @@ footer p {font-size: .85em;}
 }
 
 .round-title {
-  color: #364976;
+  color: #000;
   text-align: center;
   margin-top: 1.3em;
   padding: 0.2em;
-  border: 1.5px solid #364976;
+  border: 1.5px solid #000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   width: 83%;
 }
@@ -93,7 +93,7 @@ footer p {font-size: .85em;}
 
 .team {
   background-color: #fff;
-  color: #364976;
+  color: #000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   padding: 0 0 0 5px;
   margin: 3px 0;
@@ -110,7 +110,7 @@ footer p {font-size: .85em;}
 
 #champion {
   background-color: #fff;
-  color: #364976;
+  color: #000;
   font-family: 'Righteous', cursive;
   font-size: 25px;
   text-align: center;
@@ -124,14 +124,14 @@ footer p {font-size: .85em;}
 }
 
 .team:hover {
-  border: 1.5px solid #364976;
+  border: 1.5px solid #000;
   cursor: pointer;
 }
 
 .score {
   margin: 0;
   float: right;
-  color: #364976;
+  color: #000;
   font-family: 'Righteous', cursive;
   padding: 0 10px;
   background-color: #FFC857;
@@ -164,7 +164,7 @@ footer p {font-size: .85em;}
 }
 
 .bracket-title {
-  color:#364976;
+  color:#000;
   text-align: center;
 }
 
@@ -175,12 +175,6 @@ th {
 }
 
 select {
-  /* position: absolute; */
-  /* top: 100%; */
-  /* left: 0;
-  z-index: 1000;
-  display: none; */
-  /* float: left; */
   width: 4rem;
   padding: 0.5rem 0;
   margin: 0 10px;
@@ -192,4 +186,12 @@ select {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
+}
+
+#entry-show-dialog {
+  opacity: 1;
+  z-index: 1002;
+  background-color: white;
+  height: 560px;
+  width: 430px;
 }
