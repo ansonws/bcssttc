@@ -27,18 +27,18 @@ class EntryNewPage extends Component {
     edition: 49,
     schoolName: '',
     city: '',
-    sponsorFirstName: '',
-    sponsorLastName: '',
-    position: '',
-    email: '',
+    sponsorFirstName: 'Anson',
+    sponsorLastName: 'Lam',
+    position: 'Coach',
+    email: 'anson.lam94@gmail.com',
     teams: {
       "Boys Team A": {
         gender: 'Boys',
         tier: 'A',
         players: [
         {
-          "first_name": 'Kawhi',
-          "last_name": 'Leonard',
+          "first_name": 'Stephen',
+          "last_name": 'Curry',
           "grade": '12',
           "rating": 900,
         },
@@ -52,7 +52,7 @@ class EntryNewPage extends Component {
           "first_name": 'Elias',
           "last_name": 'Pettersson',
           "grade": '8',
-          "rating": 2000,
+          "rating": 15000,
         }
       ]
       },
@@ -196,12 +196,13 @@ class EntryNewPage extends Component {
 
   createSeason = e => {
     e.preventDefault();
-    Season.create(2020, {...this.state});
+    Season.create(2020, {...this.state, newkey: 'test'});
     this.props.history.push('/confirm');
   }
 
   render () {
     const { step } = this.state;
+    // same as: const step = this.state.step
     const steps = getSteps();
     const { 
       getStepContent,

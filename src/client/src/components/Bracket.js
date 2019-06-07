@@ -24,7 +24,7 @@ class Bracket extends Component {
       })
     }).then(() => {
       this.state.tenures.forEach((tenure) => {
-        seeds.push(`${tenure.player.last_name}, ${tenure.player.first_name} — ${tenure.rating}`)
+        seeds.push(`${tenure.player.last_name}, ${tenure.player.first_name}`)
       })
     }).then(() => {
       this.setState({seeds})
@@ -33,7 +33,6 @@ class Bracket extends Component {
 
   handleOpenDialog = season => {
     this.setState({ dialogOpen: true });
-    // this.setState({seasonSpotlight: season })
   }
 
   handleCloseDialog = () => {

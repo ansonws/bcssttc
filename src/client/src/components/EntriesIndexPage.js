@@ -31,7 +31,7 @@ class Entries extends Component {
         isLoading: false, 
         seasons,
         sortASC: {
-          school: false,
+          school: true,
           city: false,
           boysTeams: false,
           girlsTeams: false,
@@ -40,6 +40,8 @@ class Entries extends Component {
           total: false,
         }
       });
+    }).then(() => {
+      this.handleSort('school');
     })
   }
 
