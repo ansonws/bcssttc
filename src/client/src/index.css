@@ -193,3 +193,21 @@ select {
   height: 560px;
   width: 430px;
 }
+
+.eventTable {
+  display: flex;
+  justify-content: space-around;
+}
+
+.resultsHeading {
+  text-align: center;
+}
+
+.resultsTableDiv {
+  margin: 2em;
+}
+
+.resultsTable .MuiTableCell-root {
+  font-size: 20px;
+}
+
