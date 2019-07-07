@@ -37,7 +37,7 @@ module Bcssttc
 
     config.middleware.insert_before(0, Rack::Cors) do
       allow do
-        origins("localhost:3030")
+        origins("localhost:3030", "https://bcssttc-app.herokuapp.com", "http://bcssttc-app.herokuapp.com")
 
         resource(
           "/api/*",
